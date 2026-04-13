@@ -1,0 +1,18 @@
+version: 2
+
+models:
+
+    - name: stg_communes_gares
+      columns:
+        - name: id_commune,
+          descritption: identifiant de la commune de rattachement
+        - name: code_uic,
+          description: identifiant de la gare
+        - name: commune,
+        - name: commune_clean,
+        - name: nom_gare,
+          description: nom complet de la gare
+        - name: latitude_deg,
+          description: coordonnée latitude pour calcul distance
+        - name: longitude_deg
+          description: coordonnée longitude pour calcul distance

@@ -1,0 +1,7 @@
+pandas
+sqlalchemy
+sqlalchemy_utils
+requests
+dbt-core
+dbt-postgres
+psycopg2-binary

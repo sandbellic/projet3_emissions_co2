@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+    - name: emissions_co2
+      database: emissions_co2
+      schema: emissions_co2
+
+      tables:
+        - name: raw_airports
+        - name: raw_trains
+        - name: raw_communes
+        - name: raw_routes_air
+        - name: raw_routes_train
+        - name: raw_gares
+        - name: raw_valeur_emissions_co2
+        - name: raw_valeur_emissions_co2_sans
+        - name: raw_cars
+        - name: raw_stops
+        - name: raw_trips
+        - name: raw_stop_times
+        - name: raw_departements

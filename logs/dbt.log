@@ -1,0 +1,46 @@
+[0m19:09:56.670243 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105a13be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a1f4f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a1ee30>]}
+
+
+============================== 19:09:56.677017 | 15dbcafd-14d2-46d7-8806-844d0acc3b3b ==============================
+[0m19:09:56.677017 [info ] [MainThread]: Running with dbt=1.11.8
+[0m19:09:56.677753 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'debug': 'False', 'target_path': 'None', 'empty': 'None', 'write_json': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'partial_parse': 'True', 'invocation_command': 'dbt init', 'profiles_dir': '/Users/sandrinebouhired/.dbt', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'static_parser': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'log_path': 'logs', 'fail_fast': 'False', 'printer_width': '80', 'warn_error': 'None', 'version_check': 'True', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m19:10:31.213999 [debug] [MainThread]: Starter project path: /Users/sandrinebouhired/Desktop/Formation_DA/projet3/emissions_co2/env_p3/lib/python3.10/site-packages/dbt/include/starter_project
+[0m19:10:31.239738 [info ] [MainThread]: 
+Your new dbt project "emissions_co2" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:10:31.240899 [info ] [MainThread]: Setting up your profile.
+[0m19:12:16.531122 [info ] [MainThread]: Profile emissions_co2 written to /Users/sandrinebouhired/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m19:12:16.959270 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 140.43529, "process_in_blocks": "0", "process_kernel_time": 0.390599, "process_mem_max_rss": "100859904", "process_out_blocks": "0", "process_user_time": 2.108408}
+[0m19:12:16.960518 [debug] [MainThread]: Command `dbt init` succeeded at 19:12:16.960280 after 140.44 seconds
+[0m19:12:16.961323 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105a13be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a1fe80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a1db40>]}
+[0m19:12:16.962136 [debug] [MainThread]: Flushing usage events
+[0m19:12:17.497103 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:47:03.458563 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bd83c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ce14940>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ce15000>]}
+
+
+============================== 19:47:03.466551 | 845efc70-816c-4f27-90dd-235ec823c635 ==============================
+[0m19:47:03.466551 [info ] [MainThread]: Running with dbt=1.11.8
+[0m19:47:03.467477 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'partial_parse': 'True', 'invocation_command': 'dbt seed', 'use_colors': 'True', 'debug': 'False', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'target_path': 'None', 'log_cache_events': 'False', 'profiles_dir': '/Users/sandrinebouhired/.dbt', 'no_print': 'None', 'warn_error': 'None', 'static_parser': 'True', 'indirect_selection': 'eager', 'fail_fast': 'False', 'log_path': 'logs', 'log_format': 'default', 'cache_selected_only': 'False', 'quiet': 'False'}
+[0m19:47:03.468273 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/sandrinebouhired/Desktop/Formation_DA/projet3/emissions_co2/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m19:47:03.473572 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.13593628, "process_in_blocks": "0", "process_kernel_time": 0.5225, "process_mem_max_rss": "98254848", "process_out_blocks": "0", "process_user_time": 2.254165}
+[0m19:47:03.474552 [debug] [MainThread]: Command `dbt seed` failed at 19:47:03.474344 after 0.14 seconds
+[0m19:47:03.475204 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bd83c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cdc9060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ce15240>]}
+[0m19:47:03.475717 [debug] [MainThread]: Flushing usage events
+[0m19:47:04.024994 [debug] [MainThread]: An error was encountered while trying to flush usage events
