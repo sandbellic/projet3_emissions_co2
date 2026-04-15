@@ -327,3 +327,10 @@ if depart != arrivee and st.session_state.calcul:
 else:
     if depart == arrivee:
         st.warning("Choisis deux villes différentes")
+
+
+# Bouton pour aller aux KPI
+if st.button("📊 Voir les KPI"):
+    st.switch_page("pages/2_kpi.py")
+
+st.markdown('<div class="footer">Impact CO₂ - Calculateur de transport</div>', unsafe_allow_html=True)
