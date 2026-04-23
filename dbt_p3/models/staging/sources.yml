@@ -2,7 +2,7 @@ version: 2
 
 sources:
     - name: emissions_co2
-      database: emissions_co2
+      database: postgres
       schema: emissions_co2
 
       tables:

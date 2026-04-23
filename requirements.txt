@@ -5,3 +5,8 @@ requests
 dbt-core
 dbt-postgres
 psycopg2-binary
+streamlit
+folium
+streamlit_folium
+plotly
+requests

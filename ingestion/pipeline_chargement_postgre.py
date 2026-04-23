@@ -7,24 +7,21 @@ from sqlalchemy_utils import database_exists, create_database
 
 
 #------------------------------
-#  initialisation base de données
+# initialisation base de données
 #------------------------------
 # Paramètres de connexion à base de données PostgreSQL
-database = "emissions_co2"
+
 username = "postgres"
-password = "SandPOST6642"
-host="localhost"
-#database = "airflow"
-#username = "postgres"
-#password = "postgres"
-#host = "postgres"  #!!!!!!host="localhost" devient host="postgres".  A MODIFIER POUR FONCTIONNER AVEC DOCKER
+password = "warkyr"
+host = "localhost"
 port = 5432
 
-# On créée la connexion vers la base de données.  
-# postgresql s'utilise avec le driver psycopg2 (et mysql avec le driver pymyslq)
-DATABASE_URI = f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}'
-engine = create_engine(DATABASE_URI)
+engine = create_engine(
+    f"postgresql+psycopg2://{username}:{password}@{host}:{port}/postgres"
+)
 
+with engine.connect() as conn:
+    print("Connexion OK")
 
 # On créée la base de données si elle n'existe pas.
 if not database_exists(engine.url):
@@ -32,6 +29,7 @@ if not database_exists(engine.url):
 #on crée le schéma associé dans lequel on va enregistrer nos tables et vues    
 with engine.begin() as conn:
     conn.execute(text("CREATE SCHEMA IF NOT EXISTS emissions_co2"))
+
 
 
     #-------------
