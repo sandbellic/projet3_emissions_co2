@@ -1,0 +1,12 @@
+version: 2
+
+models:
+    - name: stg_air_distances     
+      columns:
+        - name: id_commune_source,  
+        - name: nom_airport_source, 
+        - name: id_commune_source,  
+        - name: nom_airport_source,
+        - name: distance_km     
+        - name: duree_min   
+

@@ -1,0 +1,15 @@
+categorie_masse,type_puissance,type_energie,emission_transport,emission_fabrication
+Mini,Faible Puissance,Electrique,19.8,83.6
+Mini,Moyenne Puissance,Electrique,19.8,83.6
+Mini,Haute Puissance,Electrique,19.8,83.6
+Citadine,Faible Puissance,Electrique,19.8,83.6
+Citadine,Moyenne Puissance,Electrique,19.8,83.6
+Citadine,Haute Puissance,Electrique,19.8,83.6
+Compacte,Faible Puissance,Electrique,19.8,83.6
+Compacte,Moyenne Puissance,Electrique,19.8,83.6
+Compacte,Haute Puissance,Electrique,19.8,83.6
+Berline,Faible Puissance,Electrique,19.8,83.6
+Berline,Moyenne Puissance,Electrique,19.8,83.6
+Berline,Haute Puissance,Electrique,19.8,83.6
+SUV,Moyenne Puissance,Electrique,19.8,83.6
+SUV,Haute Puissance,Electrique,19.8,83.6

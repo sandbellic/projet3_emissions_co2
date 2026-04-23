@@ -1,0 +1,13 @@
+version: 2
+
+models:
+    - name: stg_emission_co2_par_transport
+      columns:
+      - name: id,
+        description: identifiant du mode de transport
+      - name: mode_transport, 
+        description: dénomination du mode de transport (Avion trajet courts, TGV, Voiture thermique,...)
+      - name: part_transport, 
+        description: valeur emissions co2/km/individu lié au mode de transport
+      - name: part_fabrication
+        description: valeur emissions co2/km/individu lié à la fabrication du mode de transport

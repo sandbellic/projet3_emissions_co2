@@ -1,0 +1,15 @@
+version: 2
+
+models:
+    - name: stg_communes
+      columns:
+        - name: id_commune,
+        - name: commune,
+          description: nom de la commune
+        - name: commune_clean,
+          description: nom de la commune mis en minuscule et '-' remplacé par espace
+        - name: population,
+        - name: latitude,
+          description: coordonnées latitude du centre ville
+        - name: longitude,
+          description: coordonnées longitude du centre ville

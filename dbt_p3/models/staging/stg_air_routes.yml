@@ -1,0 +1,9 @@
+version: 2
+
+models:
+    - name: stg_air_routes
+      columns:
+        - name: source_airport,
+          description: code IATA ou AITA sur 3 car (CDG), aéroport de départ
+        - name: destination_airport,
+          description: code IATA ou AITA sur 3 car (CDG), aéroport d'arrivée

@@ -1,0 +1,21 @@
+version: 2
+
+models:
+    - name: stg_airports
+      columns:
+        - name: icao_code,
+          description: code ICAO ou OACI sur 4 car (LFPG pour charles de gaulle)
+        - name: iata_code,
+          description: code IATA ou AITA sur 3 car (CDG)
+        - name: commune,
+          description: commune de rattachement de l'aéroport
+        - name: commune_clean, 
+          description: commune nettoyee - minuscule on a enleve les (), les , les / avec les valeurs qui suivaient
+        - name: nom_airport,
+          description: nom complet de l'aéroport
+        - name: latitude_deg,
+          description: A utiliser pour calculer la distance entre 2 aéroports
+        - name: longitude_deg,
+          description: A utiliser pour calculer la distance entre 2 aéroports
+        - name: type,
+          description: large_airport, medium_airport
