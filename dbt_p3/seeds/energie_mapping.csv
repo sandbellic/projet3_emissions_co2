@@ -2,10 +2,10 @@ energ_raw,type_energie
 ES,Essence
 GO,Diesel
 EL,Electrique
-GL,Hybride
-GH,Hybride
-EH,Hybride
-EE,Hybride
+GL,Hybride Rechargeable
+GH,Hybride non Rechargeable
+EH,Hybride non Rechargeable
+EE,Hybride Rechargeable
 FE,Autre
 ES/GN,Autre
 ES/GP,Autre
