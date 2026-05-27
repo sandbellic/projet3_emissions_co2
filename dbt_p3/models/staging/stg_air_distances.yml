@@ -5,8 +5,11 @@ models:
       columns:
         - name: id_commune_source,  
         - name: nom_airport_source, 
-        - name: id_commune_source,  
-        - name: nom_airport_source,
-        - name: distance_km     
-        - name: duree_min   
+        - name: id_commune_destination,  
+        - name: nom_airport_destination,
+        - name: distance_km    
+          description: distance en km entre les aéroports de départ et d'arrivée, selon la formule de Haversine
+        - name: duree_min  
+          description: durée du trajet en minutes, calculée avec une phase décollage atterrissage = 30 min +  à partir de la distance et d'une vitesse moyenne de 800 km/h 
+          
 

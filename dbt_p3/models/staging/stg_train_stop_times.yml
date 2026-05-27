@@ -1,0 +1,25 @@
+version: 2
+
+models:
+    - name: stg_train_stop_times
+      columns:
+        - name: trip_id,
+          description: identifiant du trajet
+        - name: seq_departure, 
+          description: ordre de passage du train dans les différentes gares du trajet
+        - name: id_commune_departure,
+          description: identifiant de la commune de départ
+        - name: stop_name_departure,
+          description: nom de la gare de départ
+        - name: seq_arrival, 
+          description: ordre de passage du train dans les différentes gares du trajet
+        - name: id_commune_arrival,
+          description: identifiant de la commune d'arrivée
+        - name: stop_name_arrival,
+          description: nom de la gare d'arrivée
+        - name: attente_gare,
+          description: temps d'attente en gare en minutes, calculé à partir des heures d'arrivée et de départ
+        - name: stop_sequence, 
+          description: ordre de passage du train dans les différentes gares du trajet
+        - name: distance_km,
+          description: distance en km entre les gares de départ et d'arrivée, calculée à partir des coordonnées géographiques des gares de départ et d'arrivée avec la formule de Haversine

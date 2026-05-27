@@ -12,10 +12,10 @@ sources:
         - name: raw_routes_air
         - name: raw_routes_train
         - name: raw_gares
-        - name: raw_valeur_emissions_co2
-        - name: raw_valeur_emissions_co2_sans
-        - name: raw_cars
+        - name: raw_valeur_emissions_co2_global
+        - name: raw_valeur_emissions_co2_usage
         - name: raw_stops
         - name: raw_trips
         - name: raw_stop_times
         - name: raw_departements
+        - name: raw_new_cars

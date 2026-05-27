@@ -1,0 +1,15 @@
+version: 2
+
+models:
+    - name: stg_train_stops
+      columns:
+        - name: id_commune,
+          description: identifiant de la commune de rattachement
+        - name: stop_id, 
+          description: identifiant de la gare
+        - name: stop_name,
+          description: nom de la gare
+        - name: stop_lat,
+          description: latitude de la gare
+        - name: stop_lon,
+          description: longitude de la gare

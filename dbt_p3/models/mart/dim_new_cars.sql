@@ -4,28 +4,21 @@ with emissions_cO2 as (
 
 ),
 
-cars as (
+new_cars as (
     select 
-        categorie_masse, type_puissance, type_energie,
-        median_co2 as emission_transport,
+        carrosserie, energie,
+        co2_median as emission_transport,
     case 
-        when type_energie in ('Essence', 'Diesel', 'Autre') then
+        when energie in ('Essence', 'Diesel', 'Autre') then
                 (select part_fabrication from emissions_co2 
                 where mode_transport = 'Voiture thermique' )
-/*        when type_energie in ('Hybride', ) then.  */
-        when type_energie in ('Hybride') then    
+        when energie in ('Hybride','Electrique') then    
                 (select part_fabrication from emissions_co2 
                 where mode_transport = 'Voiture électrique' )
         else 0 
     end as emission_fabrication
-    from {{ref('stg_cars')}}
-), 
+    from {{ref('stg_new_cars')}}
+) 
 
-electric_cars as (
-    select *
-    from {{ref('cars_manquants')}}
-)
 
-select * from electric_cars
-union all
-select * from cars
+select * from new_cars

@@ -1,0 +1,19 @@
+version: 2
+
+models:
+    - name: stg_train_routes
+      columns:
+        - name: route_id,
+          description: identifiant de la route
+        - name: route_short_name,
+          description: nom court de la route
+        - name: route_long_name,
+          description: nom long de la route
+        - name: trip_id,
+          description: identifiant du trajet
+        - name: direction_id, 
+          description: identifiant de la direction du trajet
+        - name: trip_headsign,
+          description: nom de la destination du trajet
+        - name: type_transport,
+          description: type de transport (TER, Intercités, TGV, RER, Transilien,...)
