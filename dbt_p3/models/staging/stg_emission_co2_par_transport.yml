@@ -7,6 +7,10 @@ models:
         description: identifiant du mode de transport
       - name: mode_transport, 
         description: dénomination du mode de transport (Avion trajet courts, TGV, Voiture thermique,...)
+      - name: taille,
+        description: taille du mode de transport (petit, moyen, grand, SUV) pour voitures
+      - name: detail, 
+        description: détail du mode de transport (essence, diesel, et pour l'hybride non rechargeable / rechargeable) pour les voitures
       - name: part_transport, 
         description: valeur emissions co2/km/individu lié au mode de transport
       - name: part_fabrication

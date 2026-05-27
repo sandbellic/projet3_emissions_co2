@@ -10,6 +10,8 @@ models:
         - name: commune_clean,
         - name: nom_gare,
           description: nom complet de la gare
+        - name: code_departement,
+          description: code du département de la gare, à utiliser pour faire le lien avec les données de communes
         - name: latitude_deg,
           description: coordonnée latitude pour calcul distance
         - name: longitude_deg

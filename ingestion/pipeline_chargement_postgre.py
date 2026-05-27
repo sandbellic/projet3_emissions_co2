@@ -1,16 +1,15 @@
-from sqlalchemy import create_engine, text
-from sqlalchemy_utils import database_exists, create_database
-from dotenv import load_dotenv
-from ingestion.utils.data_loaders import *
+from ingestion.utils.data_loaders import load_url, fetch_api_data
 from ingestion.utils.utils_bdd import *
 
 
 def run_pipeline(engine):
-     #le pipeline va charger les fichiers .csv présents aux url définies dans des dataframes,  les API
-    #puis création des tables correspondantes sous PostgreSQL
+    # Le pipeline va charger nos différentes données à partir des urls définies ou d'APIs dans 
+    # des dataframes, 
     dico_table = {}
     dico_table = load_url()
     dico_table.update(fetch_api_data())
+ 
+    # puis charger ces dataframes dans des tables de notre base de données PostgreSQL
     load_to_postgre(dico_table, engine)
 
 

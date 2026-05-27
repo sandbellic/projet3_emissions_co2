@@ -57,9 +57,13 @@ def init_bdd():
 # chargement des données dans postgres
 #---------------
 def load_to_postgre(dico, engine):
-    #on part d'un dictionnaire contenant pour la clé un nom qui deviendra le nom de table et en valeur un dataframe
+    # on part d'un dictionnaire contenant pour clé un nom qui deviendra un nom de table et en valeur
+    # un dataframe
     for key, value in dico.items():
-        # on récupère de df du dico et on crée une table de nom key dans PostgreSQL avec pour contenu df
+        # on récupère les valeurs de dico qui sont des dataframes et pour chacunes d'elles on crée 
+        # une table dans postgres avec pour nom le préfixe 'raw_' auquel on ajoute key 
+        # si la table existe déjà, on la remplace, et on n'ajoute pas d'index, et on précise le schéma 
+        # dans lequel enregistrer la table
         df = value
         df.to_sql(f"raw_{key}", engine, if_exists="replace", index=False, schema="emissions_co2")
 

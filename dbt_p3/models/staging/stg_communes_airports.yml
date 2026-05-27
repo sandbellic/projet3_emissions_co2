@@ -13,6 +13,8 @@ models:
           description: commune de rattachement de l'aéroport
         - name: commune_clean, 
           description: commune nettoyee - minuscule on a enleve les (), les , les / avec les valeurs qui suivaient
+        - name: commune_INSEE,
+          description: code INSEE de la commune, à utiliser pour faire le lien avec les données de population
         - name: nom_airport,
           description: nom complet de l'aéroport
         - name: latitude_deg,

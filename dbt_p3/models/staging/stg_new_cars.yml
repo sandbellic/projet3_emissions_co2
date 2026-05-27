@@ -1,0 +1,14 @@
+version: 2
+
+models:
+
+    - name: stg_new_cars
+      columns:
+        - name: carrosserie,
+          description: carrosserie de la voiture
+        - name: energie,
+          description: type d'énergie utilisé par la voiture
+        - name: nb_voitures,
+          description: nombre de voitures de ce type
+        - name: co2_median,
+          description: valeur médiane des émissions de CO2 en g/km pour ce type de voiture

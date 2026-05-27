@@ -1,79 +1,109 @@
-Le projet a pour objectif de fournir une application web permettant le calcul et la comparaison des émissions CO2, 
-pour différents trajets intérieurs France, et selon différents moyens de transports utilisables.
+# Projet CO2 Emissions
 
-L'utilisateur devra renseigner une ville de départ et une ville d'arrivée. 
-Le calculateur lui proposera automatiquement, et selon les moyens de transport disponibles entre les 2 lieux, les émissions de co2 respectives.
+Application pour calculer et comparer les émissions individuelles de CO2 pour des trajets intérieurs en France.
 
-Les sources utilisées pour nos calculs :
-  Fichiers (.csv, .dat)
-  * liste des communes FR (Insee)
-  * liste des départements (Data Gouv)
-  * liste des aéroports FR (ourairports.com)
-  * liste des routes aériennes (openflights - données de 2015)
-  * lstes des trajets SNCF (trajets / Voyages / Arrêts / gares d'Arrêt)
+## 🎯 Objectif
 
-  API :
-  * liste des gares FR (SNCF open Data)
-  * Valeurs émissions CO2 par type de transport (Ademe impactCO2) avec et sans part émissions liées à construction/entretien
+Permettre à un utilisateur de comparer les émissions CO2 (train, avion, route, etc.) entre deux communes françaises et d'afficher distances, durées, valeurs d'émission et visualisations cartographiques.
+Possibilité également de saisir un kilométrage pour visualiser les valeurs d'émission.
 
+## 🧭 Stack technique
 
-La stack data utilisée:
-  * Ingestion des données : Python => PostgreSQL
-  * Nettoyage des données, et préparation (pour aboutir à un table de fait) : dbt => PostgreSQL
-  * App web : streamlit (affichage des données)
-  * orchestrateur : Airflow (ingestion et nettoyage)
-  * container : Docker pour l'ensemble
+- Python, Pandas, Requests
+- PostgreSQL
+- SQLAlchemy
+- dbt (dbt-core, dbt-postgres)
+- Streamlit (+ streamlit-folium)
+- Prefect
 
-Architecture générale :
+## 📁 Structure clé
 
-Projet3_emissions_co2
--- airflow
-|   --dags / pipeline_data.py
--- app / streamlit_app.py
--- dbt_p3
-|   -- macros : create_extensions.sql, duree_avion.sql, haversine.sql
-|   -- models : 
-|      -- mart : dim_routes (table de fait), dim_communes, dim_cars
-|      -- staging : stg_air_distances.sql, stg_air_routes.sql, stg_airports.sql, stg_cars.sql, stg_communes_airports.sql,
-|          stg_communes_gares.sql, stg_communes.sql, stg_emission_co2_par_transport.sql, stg_gares.sql, stg_train_routes.sql
-|          stg_train_stop_times.sql, stg_train_stops
-|      -- seeds : coordonnees_villes_manquantes.csv, energie_mapping.csv
-|   -- tests
-|  --  dbt_project.yml
--- ingestion / pipeline_chargement_postgre 
--- .gitignore
--- readme.md
--- requirements.txt
--- venv
--- db / init_db.sql 
--- docker-compose.yaml
+- `app_streamlit/` — application Streamlit et UI
+- `ingestion/` — scripts d'ingestion et utilitaires pour charger les sources (CSV, API) vers PostgreSQL
+- `dbt_p3/` — projet dbt (staging, mart, macros, seeds)
+- `orchestration/` — flows Prefect pour séquencer ingestion et dbt
+- `requirements.txt` — dépendances Python
 
-.dbt/profiles.yml
+## ✅ Prérequis
 
-**** INGESTION DES DONNEES *****
-A partir des différentes sources de données, chargement des URL et API dans un dictionnaire de dataframes.
-Pour chaque dataframe, création dans postgres d'une table "raw_" + clé dico, contenant les lignes de dataframe.
+- Python 3.10+
+- PostgreSQL accessible
+- dbt installé et configuré (profil `dbt_p3`)
 
-***** dbt - transformation des données *****
-A partir des tables postgres, création de vues (sélections, jointures, numérotation de lignes, ...) dans le staging, pour arriver à 3 vues métiers dans le dossier mart:
-    * dim_routes : contient les routes air et train (communes départ, arrivée, distance, temps, émissions_co2) - stockée entable avec des index
-      sur les communes pour les améliorer les temps de recherche > équivalent table de fait
-    * dim_communes : liste des communes (nom, coordonnées géographiques) de france métropolitaine
-    * dim_cars : valeurs moyennes d'émission de co2 calculées à partir de données réelles par motorisation et catégorie
+## ⚙️ Configuration
 
-***** app streamlit ******
-A partir des 3 vues/table stockées dans postgres, recherche et affichage des valeurs calculées (distances, temps et émissions co2) pour les trajets sélectionnés, par moyen de transport, quand ils existent, dans une application web.
-page 1 . Comparaison chiffrée et graphique pour bien se rendre compte des différences.
-Représentation du trajet routier sur une map.
-page 2 . KPIs
+Créer un fichier `.env` à la racine et définir :
 
-***** airflow ***** et Docker
-Si docker isole notre projet dans un container pour des raisons de portabilité, ...
-airflow va nous permettre d'enchainer et planifier de façon automatique, la chaine suivante :
-ingestion des données >> dbt seed (chargement des données figées) >> dbt run (création des vues)
-elle n'inclut pas l'application web streamlit qui est lancée de faon indépendante.
+```
+POSTGRES_DB=<nom_de_la_base>
+POSTGRES_USER=<utilisateur>
+POSTGRES_PASSWORD=<mot_de_passe>
+POSTGRES_HOST=<host>
+POSTGRES_PORT=<port>
+```
 
+Ajoutez `.env` à `.gitignore` pour ne pas commiter les secrets.
 
+## 📦 Installation
 
+```bash
+git clone <url-du-projet>
+cd projet3_emissions_co2
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
 
+## ▶️ Exécution des étapes principales
 
+1. Ingestion des données (création/chargement des tables `raw_*` dans le schéma `emissions_co2`) :
+
+```bash
+python ingestion/pipeline_chargement_postgre.py
+```
+
+2. dbt — seed et run :
+
+```bash
+cd dbt_p3
+dbt seed
+dbt run
+```
+
+3. Orchestration complète (Prefect) :
+
+```bash
+python orchestration/prefect_flow.py
+```
+
+4. Lancer l'application Streamlit :
+
+```bash
+streamlit run app_streamlit/app.py
+```
+
+## 🔎 Sources de données
+
+- listes communes (INSEE)
+- départements (data.gouv)
+- aéroports (OurAirports)
+- routes aériennes (OpenFlights)
+- données SNCF (gares, trajets)
+- valeurs émissions (ADEME ImpactCO2)
+
+## 🛠 Bonnes pratiques
+
+- Ne commitez jamais les secrets (.env).
+- Synchronisez `profiles.yml` dbt avec les mêmes paramètres PostgreSQL.
+- Préparer un `docker-compose` pour reproductibilité en production.
+
+## ✅ Améliorations suggérées
+
+- Ajouter des tests dbt et un pipeline CI
+- Conteneuriser l'ensemble (Docker Compose)
+- Ajouter une page Streamlit pour export / API
+
+## Licence
+
+À définir.
